@@ -11,8 +11,8 @@ public class Zombies : MonoBehaviour {
 	private int minTime=2;
 	private float m_speed=1.0f;
 
-	// private float chaseRate = 1.0f;
-	// private float nextChase;
+	private float chaseRate = 1.0f;
+	private float nextChase;
 
 	private float detect_dst = 1.5f;
 	private float eye = 3.0f;
@@ -33,7 +33,7 @@ public class Zombies : MonoBehaviour {
 
 		detectPlayer=false;
 		nextMovement=0.0f;
-		// nextChase=0.0f;
+		nextChase=0.0f;
 		_transform = GetComponent<Transform>() as Transform;
 		_box_collider = GetComponent<BoxCollider2D>() as BoxCollider2D;
 	}
@@ -54,11 +54,11 @@ public class Zombies : MonoBehaviour {
 		}
 
 		if (detectPlayer) {
-			// if (nextChase<Time.time){
-			// 	chasePlayer();
-			// 	nextChase=Time.time+chaseRate;
-			// }	
-			chasePlayer();	
+			if (nextChase<Time.time){
+				chasePlayer();
+				nextChase=Time.time+chaseRate;
+			}	
+			// chasePlayer();	
 		}else{
 			idle();
 		}
@@ -165,47 +165,47 @@ public class Zombies : MonoBehaviour {
 
 	void chasePlayer(){
 		int x=1;
-		// Vector3 dif=player.transform.position-_transform.position;
-		// Vector3 current_pos = _transform.position;
-		// Vector2 current_pos_2d = new Vector2(current_pos.x,current_pos.y);
+		Vector3 dif=player.transform.position-_transform.position;
+		Vector3 current_pos = _transform.position;
+		Vector2 current_pos_2d = new Vector2(current_pos.x,current_pos.y);
 		
-		// Vector2 collider_shift = _box_collider.offset;
-		// current_pos_2d = current_pos_2d+collider_shift;
+		Vector2 collider_shift = _box_collider.offset;
+		current_pos_2d = current_pos_2d+collider_shift;
 
-		// if(dif.y>0){
-		// 	if(Physics2D.Raycast(current_pos_2d,Vector2.up, detect_dst,ObsLayerMask)){
-		// 		Debug.Log("Cannot Go Up");
-		// 	}else if (Physics2D.Raycast(current_pos_2d,Vector2.up, detect_dst,NPCLayerMask)){
-		// 		Debug.Log("NPC Detected");
-		// 	}else{	
-		// 		current_pos.y = current_pos.y + m_speed;
-		// 	}
-		// }else if(dif.x<0){
-		// 	if(Physics2D.Raycast(current_pos_2d, -Vector2.right, detect_dst,ObsLayerMask)){
-		// 		Debug.Log("Cannot Go Left");
-		// 	}else if (Physics2D.Raycast(current_pos_2d,-Vector2.right, detect_dst,NPCLayerMask)){
-		// 		Debug.Log("NPC Detected");
-		// 	}else{
-		// 		current_pos.x = current_pos.x - m_speed;
-		// 	}
-		// }else if(dif.y<0){
-		// 	if(Physics2D.Raycast(current_pos_2d, -Vector2.up, detect_dst,ObsLayerMask)){
-		// 		Debug.Log("Cannot Go Down");	
-		// 	}else if (Physics2D.Raycast(current_pos_2d,-Vector2.up, detect_dst,NPCLayerMask)){
-		// 		Debug.Log("NPC Detected");
-		// 	}else{
-		// 		current_pos.y = current_pos.y - m_speed;
-		// 	}	
-		// }else if(dif.x>0){
-		// 	if(Physics2D.Raycast(current_pos_2d, Vector2.right, detect_dst,ObsLayerMask)){
-		// 		Debug.Log("Cannot Go Right");
-		// 	}else if (Physics2D.Raycast(current_pos_2d,Vector2.right, detect_dst,NPCLayerMask)){
-		// 		Debug.Log("NPC Detected");
-		// 	}else{
-		// 		current_pos.x = current_pos.x + m_speed;
-		// 	}
-		// }
-		// _transform.position = current_pos;
+		if(dif.y>0){
+			if(Physics2D.Raycast(current_pos_2d,Vector2.up, detect_dst,ObsLayerMask)){
+				Debug.Log("Cannot Go Up");
+			}else if (Physics2D.Raycast(current_pos_2d,Vector2.up, detect_dst,NPCLayerMask)){
+				Debug.Log("NPC Detected");
+			}else{	
+				current_pos.y = current_pos.y + m_speed;
+			}
+		}else if(dif.x<0){
+			if(Physics2D.Raycast(current_pos_2d, -Vector2.right, detect_dst,ObsLayerMask)){
+				Debug.Log("Cannot Go Left");
+			}else if (Physics2D.Raycast(current_pos_2d,-Vector2.right, detect_dst,NPCLayerMask)){
+				Debug.Log("NPC Detected");
+			}else{
+				current_pos.x = current_pos.x - m_speed;
+			}
+		}else if(dif.y<0){
+			if(Physics2D.Raycast(current_pos_2d, -Vector2.up, detect_dst,ObsLayerMask)){
+				Debug.Log("Cannot Go Down");	
+			}else if (Physics2D.Raycast(current_pos_2d,-Vector2.up, detect_dst,NPCLayerMask)){
+				Debug.Log("NPC Detected");
+			}else{
+				current_pos.y = current_pos.y - m_speed;
+			}	
+		}else if(dif.x>0){
+			if(Physics2D.Raycast(current_pos_2d, Vector2.right, detect_dst,ObsLayerMask)){
+				Debug.Log("Cannot Go Right");
+			}else if (Physics2D.Raycast(current_pos_2d,Vector2.right, detect_dst,NPCLayerMask)){
+				Debug.Log("NPC Detected");
+			}else{
+				current_pos.x = current_pos.x + m_speed;
+			}
+		}
+		_transform.position = current_pos;
 	}
 }
 

@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 534812686}
   - component: {fileID: 534812687}
   - component: {fileID: 534812688}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Zombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2054,7 +2054,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1706228263}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Enemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2367,7 +2367,7 @@ GameObject:
   - component: {fileID: 2128417069}
   - component: {fileID: 2128417068}
   - component: {fileID: 2128417070}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Zombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
