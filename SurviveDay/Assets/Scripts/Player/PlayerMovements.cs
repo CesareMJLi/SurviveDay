@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 public class PlayerMovements : MonoBehaviour {
-	private float m_speed = 1.2f;
+	private float m_speed = 1.0f;
 
 	private Transform _transform;
 	private BoxCollider2D _box_collider;
