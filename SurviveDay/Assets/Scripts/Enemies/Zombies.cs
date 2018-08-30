@@ -57,7 +57,8 @@ public class Zombies : MonoBehaviour {
 			// if (nextChase<Time.time){
 			// 	chasePlayer();
 			// 	nextChase=Time.time+chaseRate;
-			// }		
+			// }	
+			chasePlayer();	
 		}else{
 			idle();
 		}
@@ -72,6 +73,7 @@ public class Zombies : MonoBehaviour {
 	}
 
 	void randomMove(){
+		Debug.Log("RANDOM MOVE");
 		Vector3 current_pos = _transform.position;
 		Vector2 current_pos_2d = new Vector2(current_pos.x,current_pos.y);
 		
@@ -81,49 +83,88 @@ public class Zombies : MonoBehaviour {
 		Random rnd = new Random();
 		int choice = rnd.Next(1,5);
 
-		while (true) {
-			if (choice==1){
+		switch (choice){
+			case 1:
 				if(Physics2D.Raycast(current_pos_2d,Vector2.up, detect_dst,ObsLayerMask)){
 					// Debug.Log("Cannot Go Up");
 				}else if (Physics2D.Raycast(current_pos_2d,Vector2.up, detect_dst,NPCLayerMask)){
 					// Debug.Log("NPC Detected");
 				}else{	
 					current_pos.y = current_pos.y + m_speed;
-					break;
 				}
-			}else if (choice ==2){
+				break;
+			case 2:
 				if(Physics2D.Raycast(current_pos_2d, -Vector2.right, detect_dst,ObsLayerMask)){
 					// Debug.Log("Cannot Go Left");
 				}else if (Physics2D.Raycast(current_pos_2d,-Vector2.right, detect_dst,NPCLayerMask)){
 					// Debug.Log("NPC Detected");
 				}else{
 					current_pos.x = current_pos.x - m_speed;
-					break;
 				}
-			}else if (choice ==3){
+				break;
+			case 3:
 				if(Physics2D.Raycast(current_pos_2d, -Vector2.up, detect_dst,ObsLayerMask)){
 					// Debug.Log("Cannot Go Down");	
 				}else if (Physics2D.Raycast(current_pos_2d,-Vector2.up, detect_dst,NPCLayerMask)){
 					// Debug.Log("NPC Detected");
 				}else{
 					current_pos.y = current_pos.y - m_speed;
-					break;
 				}
-			}else{
+				break;
+			default:
 				if(Physics2D.Raycast(current_pos_2d, Vector2.right, detect_dst,ObsLayerMask)){
 					// Debug.Log("Cannot Go Right");
 				}else if (Physics2D.Raycast(current_pos_2d,Vector2.right, detect_dst,NPCLayerMask)){
 					// Debug.Log("NPC Detected");
 				}else{
 					current_pos.x = current_pos.x + m_speed;
-					break;
 				}
+				break;
 			}
-		}
+		// while (true) {
+		// 	if (choice==1){
+		// 		if(Physics2D.Raycast(current_pos_2d,Vector2.up, detect_dst,ObsLayerMask)){
+		// 			// Debug.Log("Cannot Go Up");
+		// 		}else if (Physics2D.Raycast(current_pos_2d,Vector2.up, detect_dst,NPCLayerMask)){
+		// 			// Debug.Log("NPC Detected");
+		// 		}else{	
+		// 			current_pos.y = current_pos.y + m_speed;
+		// 			break;
+		// 		}
+		// 	}else if (choice ==2){
+		// 		if(Physics2D.Raycast(current_pos_2d, -Vector2.right, detect_dst,ObsLayerMask)){
+		// 			// Debug.Log("Cannot Go Left");
+		// 		}else if (Physics2D.Raycast(current_pos_2d,-Vector2.right, detect_dst,NPCLayerMask)){
+		// 			// Debug.Log("NPC Detected");
+		// 		}else{
+		// 			current_pos.x = current_pos.x - m_speed;
+		// 			break;
+		// 		}
+		// 	}else if (choice ==3){
+		// 		if(Physics2D.Raycast(current_pos_2d, -Vector2.up, detect_dst,ObsLayerMask)){
+		// 			// Debug.Log("Cannot Go Down");	
+		// 		}else if (Physics2D.Raycast(current_pos_2d,-Vector2.up, detect_dst,NPCLayerMask)){
+		// 			// Debug.Log("NPC Detected");
+		// 		}else{
+		// 			current_pos.y = current_pos.y - m_speed;
+		// 			break;
+		// 		}
+		// 	}else{
+		// 		if(Physics2D.Raycast(current_pos_2d, Vector2.right, detect_dst,ObsLayerMask)){
+		// 			// Debug.Log("Cannot Go Right");
+		// 		}else if (Physics2D.Raycast(current_pos_2d,Vector2.right, detect_dst,NPCLayerMask)){
+		// 			// Debug.Log("NPC Detected");
+		// 		}else{
+		// 			current_pos.x = current_pos.x + m_speed;
+		// 			break;
+		// 		}
+		// 	}
+		// }
 		_transform.position = current_pos;
 	}
 
 	void chasePlayer(){
+		int x=1;
 		// Vector3 dif=player.transform.position-_transform.position;
 		// Vector3 current_pos = _transform.position;
 		// Vector2 current_pos_2d = new Vector2(current_pos.x,current_pos.y);

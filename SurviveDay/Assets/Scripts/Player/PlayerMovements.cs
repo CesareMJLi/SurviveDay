@@ -8,7 +8,7 @@ public class PlayerMovements : MonoBehaviour {
 
 	private Transform _transform;
 	private BoxCollider2D _box_collider;
-	private SpriteRenderer _sprite_rend;
+	// private SpriteRenderer _sprite_rend;
 
 	private float detect_dst = 1.5f;
 
@@ -21,7 +21,7 @@ public class PlayerMovements : MonoBehaviour {
 		NPCLayerMask = 1 << 10;
 		_transform = GetComponent<Transform>() as Transform;
 		_box_collider = GetComponent<BoxCollider2D>() as BoxCollider2D;
-		_sprite_rend = GetComponent<SpriteRenderer>() as SpriteRenderer;
+		// _sprite_rend = GetComponent<SpriteRenderer>() as SpriteRenderer;
 	}
 	
 	// Update is called once per frame
@@ -39,7 +39,7 @@ public class PlayerMovements : MonoBehaviour {
 				Debug.Log("NPC Detected");
 			}else{	
 				current_pos.y = current_pos.y + m_speed;
-				_sprite_rend.sortingOrder = -(int)_transform.position.y;
+				// _sprite_rend.sortingOrder = -(int)_transform.position.y;
 			}
 		}else if(Input.GetKeyDown(KeyCode.A)){
 			if(Physics2D.Raycast(current_pos_2d, -Vector2.right, detect_dst,ObsLayerMask)){
@@ -48,7 +48,7 @@ public class PlayerMovements : MonoBehaviour {
 				Debug.Log("NPC Detected");
 			}else{
 				current_pos.x = current_pos.x - m_speed;
-				_sprite_rend.sortingOrder = -(int)_transform.position.y;
+				// _sprite_rend.sortingOrder = -(int)_transform.position.y;
 			}
 		}else if(Input.GetKeyDown(KeyCode.S)){
 			if(Physics2D.Raycast(current_pos_2d, -Vector2.up, detect_dst,ObsLayerMask)){
@@ -57,7 +57,7 @@ public class PlayerMovements : MonoBehaviour {
 				Debug.Log("NPC Detected");
 			}else{
 				current_pos.y = current_pos.y - m_speed;
-				_sprite_rend.sortingOrder = -(int)_transform.position.y;
+				// _sprite_rend.sortingOrder = -(int)_transform.position.y;
 			}	
 		}else if(Input.GetKeyDown(KeyCode.D)){
 			if(Physics2D.Raycast(current_pos_2d, Vector2.right, detect_dst,ObsLayerMask)){
@@ -66,7 +66,7 @@ public class PlayerMovements : MonoBehaviour {
 				Debug.Log("NPC Detected");
 			}else{
 				current_pos.x = current_pos.x + m_speed;
-				_sprite_rend.sortingOrder = -(int)_transform.position.y;
+				// _sprite_rend.sortingOrder = -(int)_transform.position.y;
 			}
 		}
 		_transform.position = current_pos;
