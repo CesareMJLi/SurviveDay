@@ -14,8 +14,8 @@ public class Zombies : MonoBehaviour {
 	private float chaseRate = 1.0f;
 	private float nextChase;
 
-	private float detect_dst = 2.5f;
-	private float eye = 3.0f;
+	private float detect_dst = 1.5f;
+	private float eye = 3.5f;
 	private float cur_dst;
 
 	private Transform _transform;
@@ -164,7 +164,6 @@ public class Zombies : MonoBehaviour {
 	}
 
 	void chasePlayer(){
-		int x=1;
 		Vector3 dif=player.transform.position-_transform.position;
 		Vector3 current_pos = _transform.position;
 		Vector2 current_pos_2d = new Vector2(current_pos.x,current_pos.y);

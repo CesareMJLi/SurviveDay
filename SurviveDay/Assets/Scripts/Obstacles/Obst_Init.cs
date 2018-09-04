@@ -8,11 +8,11 @@ public class Obst_Init : MonoBehaviour {
 	private Transform _transform;
 	private BoxCollider2D _box_collider;
 	
-	private int layerMask;
+	// private int layerMask;
 
 	// Use this for initialization
 	void Start () {
-		layerMask = 1 << 15;
+		// layerMask = 1 << 15;
 		_sprite_rend = GetComponent<SpriteRenderer>() as SpriteRenderer;
 		_transform = GetComponent<Transform>() as Transform;
 		_sprite_rend.sortingOrder = -(int)_transform.position.y;
