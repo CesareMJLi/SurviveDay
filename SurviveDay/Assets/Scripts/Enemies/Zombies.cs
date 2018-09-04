@@ -14,7 +14,7 @@ public class Zombies : MonoBehaviour {
 	private float chaseRate = 1.0f;
 	private float nextChase;
 
-	private float detect_dst = 1.5f;
+	private float detect_dst = 2.5f;
 	private float eye = 3.0f;
 	private float cur_dst;
 

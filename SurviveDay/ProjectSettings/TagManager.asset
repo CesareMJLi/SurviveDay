@@ -24,7 +24,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - UI
   - 
   - 
   - 
@@ -55,4 +55,7 @@ TagManager:
     locked: 0
   - name: Decoration
     uniqueID: 451711957
+    locked: 0
+  - name: UI
+    uniqueID: 985266905
     locked: 0
