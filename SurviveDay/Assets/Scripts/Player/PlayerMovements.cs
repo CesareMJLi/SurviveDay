@@ -5,6 +5,7 @@ using System;
 
 public class PlayerMovements : MonoBehaviour {
 	private float m_speed = 1.0f;
+	public TextManager textManager;
 
 	private Transform _transform;
 	private BoxCollider2D _box_collider;
@@ -21,6 +22,7 @@ public class PlayerMovements : MonoBehaviour {
 		NPCLayerMask = 1 << 10;
 		_transform = GetComponent<Transform>() as Transform;
 		_box_collider = GetComponent<BoxCollider2D>() as BoxCollider2D;
+		// textManager = GetComponent<TextManager>();
 		// _sprite_rend = GetComponent<SpriteRenderer>() as SpriteRenderer;
 	}
 	
@@ -34,36 +36,46 @@ public class PlayerMovements : MonoBehaviour {
 		
 		if(Input.GetKeyDown(KeyCode.W)){
 			if(Physics2D.Raycast(current_pos_2d,Vector2.up, detect_dst,ObsLayerMask)){
-				Debug.Log("Cannot Go Up");
+				// Debug.Log("Cannot Go Up");
+				// globalTextInfo="Cannot Go Up\n"+globalTextInfo;
+				textManager.UpdateTextField("【Player】Cannot go up\n");
 			}else if (Physics2D.Raycast(current_pos_2d,Vector2.up, detect_dst,NPCLayerMask)){
-				Debug.Log("NPC Detected");
+				// Debug.Log("NPC Detected");
+				// globalTextInfo="Cannot Go Up\n"+globalTextInfo;
+				textManager.UpdateTextField("【Player】NPC detected\n");
 			}else{	
 				current_pos.y = current_pos.y + m_speed;
 				// _sprite_rend.sortingOrder = -(int)_transform.position.y;
 			}
 		}else if(Input.GetKeyDown(KeyCode.A)){
 			if(Physics2D.Raycast(current_pos_2d, -Vector2.right, detect_dst,ObsLayerMask)){
-				Debug.Log("Cannot Go Left");
+				// Debug.Log("Cannot Go Left");
+				textManager.UpdateTextField("【Player】Cannot go left\n");
 			}else if (Physics2D.Raycast(current_pos_2d,-Vector2.right, detect_dst,NPCLayerMask)){
-				Debug.Log("NPC Detected");
+				// Debug.Log("NPC Detected");
+				textManager.UpdateTextField("【Player】NPC detected\n");
 			}else{
 				current_pos.x = current_pos.x - m_speed;
 				// _sprite_rend.sortingOrder = -(int)_transform.position.y;
 			}
 		}else if(Input.GetKeyDown(KeyCode.S)){
 			if(Physics2D.Raycast(current_pos_2d, -Vector2.up, detect_dst,ObsLayerMask)){
-				Debug.Log("Cannot Go Down");	
+				// Debug.Log("Cannot Go Down");	
+				textManager.UpdateTextField("【Player】Cannot go down\n");
 			}else if (Physics2D.Raycast(current_pos_2d,-Vector2.up, detect_dst,NPCLayerMask)){
-				Debug.Log("NPC Detected");
+				// Debug.Log("NPC Detected");
+				textManager.UpdateTextField("【Player】NPC detected\n");
 			}else{
 				current_pos.y = current_pos.y - m_speed;
 				// _sprite_rend.sortingOrder = -(int)_transform.position.y;
 			}	
 		}else if(Input.GetKeyDown(KeyCode.D)){
 			if(Physics2D.Raycast(current_pos_2d, Vector2.right, detect_dst,ObsLayerMask)){
-				Debug.Log("Cannot Go Right");
+				// Debug.Log("Cannot Go Right");
+				textManager.UpdateTextField("【Player】Cannot go right\n");
 			}else if (Physics2D.Raycast(current_pos_2d,Vector2.right, detect_dst,NPCLayerMask)){
-				Debug.Log("NPC Detected");
+				// Debug.Log("NPC Detected");
+				textManager.UpdateTextField("【Player】NPC detected\n");
 			}else{
 				current_pos.x = current_pos.x + m_speed;
 				// _sprite_rend.sortingOrder = -(int)_transform.position.y;

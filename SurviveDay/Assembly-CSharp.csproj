@@ -59,11 +59,15 @@
      <Compile Include="Assets\Scripts\Loader.cs" />
      <Compile Include="Assets\Scripts\Obstacles\Obst_Init.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovements.cs" />
+     <Compile Include="Assets\Scripts\TextManager.cs" />
      <Compile Include="Assets\Scripts\UI\ButtonBag.cs" />
      <Compile Include="Assets\Scripts\UI\ButtonBuild.cs" />
      <Compile Include="Assets\Scripts\UI\ButtonMission.cs" />
      <Compile Include="Assets\Scripts\UI\ButtonState.cs" />
+     <Compile Include="Assets\Scripts\UI\ButtonToptext.cs" />
+     <Compile Include="Assets\Scripts\UI\ButtonTransparent.cs" />
      <Compile Include="Assets\Scripts\UI\SceneExitButton.cs" />
+     <Compile Include="Assets\Scripts\UI\ScrollToptext.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>/Users/cesare/SurviveDay/SurviveDay/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>

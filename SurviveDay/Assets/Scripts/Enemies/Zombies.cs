@@ -5,6 +5,8 @@ using Random = System.Random;
 
 public class Zombies : MonoBehaviour {
 
+	public TextManager textManager;
+
 	private bool detectPlayer;
 	private float nextMovement;
 	private int maxTime=5;
@@ -43,12 +45,14 @@ public class Zombies : MonoBehaviour {
 		cur_dst = Vector3.Distance(player.transform.position, _transform.position);
 		if (cur_dst<eye){
 			if (!detectPlayer){
-				Debug.Log("IT DETECTS PLAYER");
+				// Debug.Log("IT DETECTS PLAYER");
+				textManager.UpdateTextField("【Zombies】It detected player\n");
 				detectPlayer=true;
 			}
 		}else{
 			if (detectPlayer){
-				Debug.Log("IT NOT LONGER DETECTS PLAYER");
+				// Debug.Log("IT NOT LONGER DETECTS PLAYER");
+				textManager.UpdateTextField("【Zombies】It no longer detected player\n");
 				detectPlayer=false;
 			}
 		}
@@ -73,7 +77,8 @@ public class Zombies : MonoBehaviour {
 	}
 
 	void randomMove(){
-		Debug.Log("RANDOM MOVE");
+		// Debug.Log("RANDOM MOVE");
+		textManager.UpdateTextField("【Zombies】*RANDOM MOVE\n");
 		Vector3 current_pos = _transform.position;
 		Vector2 current_pos_2d = new Vector2(current_pos.x,current_pos.y);
 		
@@ -173,33 +178,33 @@ public class Zombies : MonoBehaviour {
 
 		if(dif.y>0){
 			if(Physics2D.Raycast(current_pos_2d,Vector2.up, detect_dst,ObsLayerMask)){
-				Debug.Log("Cannot Go Up");
+				// Debug.Log("Cannot Go Up");
 			}else if (Physics2D.Raycast(current_pos_2d,Vector2.up, detect_dst,NPCLayerMask)){
-				Debug.Log("NPC Detected");
+				// Debug.Log("NPC Detected");
 			}else{	
 				current_pos.y = current_pos.y + m_speed;
 			}
 		}else if(dif.x<0){
 			if(Physics2D.Raycast(current_pos_2d, -Vector2.right, detect_dst,ObsLayerMask)){
-				Debug.Log("Cannot Go Left");
+				// Debug.Log("Cannot Go Left");
 			}else if (Physics2D.Raycast(current_pos_2d,-Vector2.right, detect_dst,NPCLayerMask)){
-				Debug.Log("NPC Detected");
+				// Debug.Log("NPC Detected");
 			}else{
 				current_pos.x = current_pos.x - m_speed;
 			}
 		}else if(dif.y<0){
 			if(Physics2D.Raycast(current_pos_2d, -Vector2.up, detect_dst,ObsLayerMask)){
-				Debug.Log("Cannot Go Down");	
+				// Debug.Log("Cannot Go Down");	
 			}else if (Physics2D.Raycast(current_pos_2d,-Vector2.up, detect_dst,NPCLayerMask)){
-				Debug.Log("NPC Detected");
+				// Debug.Log("NPC Detected");
 			}else{
 				current_pos.y = current_pos.y - m_speed;
 			}	
 		}else if(dif.x>0){
 			if(Physics2D.Raycast(current_pos_2d, Vector2.right, detect_dst,ObsLayerMask)){
-				Debug.Log("Cannot Go Right");
+				// Debug.Log("Cannot Go Right");
 			}else if (Physics2D.Raycast(current_pos_2d,Vector2.right, detect_dst,NPCLayerMask)){
-				Debug.Log("NPC Detected");
+				// Debug.Log("NPC Detected");
 			}else{
 				current_pos.x = current_pos.x + m_speed;
 			}
