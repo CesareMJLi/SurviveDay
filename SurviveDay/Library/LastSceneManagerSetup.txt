@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scene/Scene128.unity
+- path: Assets/Scene/SceneWithOcculation.unity
   isLoaded: 1
   isActive: 1
